@@ -24,12 +24,11 @@ class HyoukaRepository(
             }
 
             override fun shouldFetch(data: List<Hyouka>?): Boolean =
-//                data == null || data.isEmpty()
-                true
+                data == null || data.isEmpty()
+//                true
 
             override suspend fun createCall(): Flow<ApiResponse<List<HyoukaResultResponse>>> =
                 remoteDataSource.getList()
-
 
             override suspend fun saveCallResult(data: List<HyoukaResultResponse>) {
                 val itemList = DataMapper.mapResponsesToEntities(data)
